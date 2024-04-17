@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Cashier from "./pages/Cashier";
 import Sales from "./pages/Sales";
 import Settings from "./pages/Settings";
@@ -11,7 +11,7 @@ function App() {
       <div className="">
         <Sidebar />
       </div>
-      <div className="">
+      <div className="w-screen h-screen p-11">
         <Routes>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/cashier" element={<Cashier />}></Route>
