@@ -11,7 +11,7 @@ function App() {
       <div className="">
         <Sidebar />
       </div>
-      <div className="w-screen h-screen p-11">
+      <div className="w-screen h-screen p-7">
         <Routes>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/cashier" element={<Cashier />}></Route>

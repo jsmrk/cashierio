@@ -38,7 +38,7 @@ const Summary = () => {
   };
 
   return (
-    <div className="w-full h-full flex gap-11">
+    <div className="w-full h-full flex gap-7">
       {summaryData.map((data, index) => (
         <Card
           key={index}
