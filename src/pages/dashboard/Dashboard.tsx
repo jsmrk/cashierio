@@ -3,6 +3,7 @@ import React from "react";
 import Card from "../../components/Card";
 import SidebarTitle from "../../components/SidebarTitle";
 import Summary from "./Summary";
+import TopSales from "./TopSales";
 
 const Dashboard = () => {
   return (
@@ -17,7 +18,9 @@ const Dashboard = () => {
       </div>
       {/* RIGHT DIV */}
       <div className="flex flex-col col-span-3 gap-5">
-        <Card className="basis-1/2">Most Sold</Card>
+        <Card className="basis-1/2">
+          <TopSales />
+        </Card>
         <Card className="basis-1/2">Least sold</Card>
       </div>
     </div>

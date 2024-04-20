@@ -41,6 +41,7 @@ const Sidebar = () => {
   const handleClick = (path: string) => {
     setActiveLink(path);
   };
+
   const buttonStyle =
     "text-primary text-xl px-5 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-200";
 

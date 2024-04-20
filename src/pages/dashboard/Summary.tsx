@@ -42,14 +42,14 @@ const Summary = () => {
       {summaryData.map((data, index) => (
         <Card
           key={index}
-          className="basis-1/3 flex flex-col justify-between gap-3"
+          className="basis-1/3 flex flex-col justify-between gap-4"
         >
           <div className="flex gap-3 justify-start items-center">
             <div className="bg-dark-100 p-3 rounded-xl">
               <img
                 src={data.icon}
                 alt={`${data.title} icon`}
-                className="size-10 text-green-300"
+                className="size-7 text-green-300"
               />
             </div>
             <div
