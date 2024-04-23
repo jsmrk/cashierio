@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import SidebarTitle from "../../components/SidebarTitle";
 import Summary from "./Summary";
 import TopSales from "./TopSales";
+import Transactions from "./Transactions";
 
 const Dashboard = () => {
   return (
@@ -14,7 +15,9 @@ const Dashboard = () => {
         <div className="basis-1/6">
           <Summary />
         </div>
-        <Card className="basis-4/6">transactions</Card>
+        <Card className="basis-4/6">
+          <Transactions />
+        </Card>
       </div>
       {/* RIGHT DIV */}
       <div className="flex flex-col col-span-3 gap-5">
