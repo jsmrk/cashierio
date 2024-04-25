@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   data: {
     imgUrl: string;
@@ -18,7 +16,7 @@ const TopSalesList = ({ data }: Props) => {
           </div>
           <div>
             <div className="font-bold">{data.name}</div>
-            <div className="text-t-grey">{data.sales} dishes sales</div>
+            <div className="text-grey">{data.sales} dishes sales</div>
           </div>
         </div>
       ))}
