@@ -81,6 +81,33 @@ const data = [
         user: 'Josh',
     },
     {
+      id: 'P532442',
+      itemName: 'Coke 1.5L',
+      qty: '2',
+      price: '94',
+      time: '10:32 AM',
+      date: '9-4-24',
+      user: 'Josh',
+    },
+    {
+      id: 'P532442',
+      itemName: 'Coke 1.5L',
+      qty: '2',
+      price: '94',
+      time: '10:32 AM',
+      date: '9-4-24',
+      user: 'Josh',
+    },
+    {
+      id: 'P532442',
+      itemName: 'Coke 1.5L',
+      qty: '2',
+      price: '94',
+      time: '10:32 AM',
+      date: '9-4-24',
+      user: 'Josh',
+    },
+    {
         id: 'P532442',
         itemName: 'Coke 1.5L',
         qty: '2',
@@ -96,28 +123,28 @@ const SalesTransactions = () => {
         <table className="w-full h-full">
         <thead>
           <tr className="text-xl text-left font-bold border-b border-b-slate-700 pb-7">
-            <th className="px-3 py-2 text-white">ID</th>
-            <th className="px-3 py-2 text-white">Item Name</th>
-            <th className="px-3 py-2 text-white">Qty</th>
-            <th className="px-3 py-2 text-white">Price</th>
-            <th className="px-3 py-2 text-white">Time</th>
-            <th className="px-3 py-2 text-white">Date</th>
-            <th className="px-3 py-2 text-white">User</th>
+            <th className="px-3 py-2">ID</th>
+            <th className="px-3 py-2">Item Name</th>
+            <th className="px-3 py-2">Qty</th>
+            <th className="px-3 py-2">Price</th>
+            <th className="px-3 py-2">Time</th>
+            <th className="px-3 py-2">Date</th>
+            <th className="px-3 py-2">User</th>
           </tr>
         </thead>
         <tbody className="rounded-3xl">
-          {data.slice(0, 12).map((item, index) => (
+          {data.slice(0, 15).map((item, index) => (
             <tr
               key={index}
               className="hover:cursor-pointer hover:bg-primary rounded-3xl transition-all duration-200"
             >
-              <td className="px-3 py-3 text-white">{item.id}</td>
-              <td className="px-3 py-3 text-white">{item.itemName}</td>
-              <td className="px-3 py-3 text-white">{item.qty}</td>
-              <td className="px-3 py-3 text-white">{item.price}</td>
-              <td className="px-3 py-3 text-white">{item.time}</td>
-              <td className="px-3 py-3 text-white">{item.date}</td>
-              <td className="px-3 py-3 text-white">{item.user}</td>
+              <td className="px-3 py-3">{item.id}</td>
+              <td className="px-3 py-3">{item.itemName}</td>
+              <td className="px-3 py-3">{item.qty}</td>
+              <td className="px-3 py-3">{item.price}</td>
+              <td className="px-3 py-3">{item.time}</td>
+              <td className="px-3 py-3">{item.date}</td>
+              <td className="px-3 py-3">{item.user}</td>
             </tr>
           ))}
         </tbody>
