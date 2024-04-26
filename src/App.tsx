@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Cashier from "./pages/Cashier";
 import Sales from "./pages/sales/Sales";
 import Settings from "./pages/Settings";
 import Sidebar from "./components/Sidebar";
+import Cashier from "./pages/cashier/Cashier";
 
 function App() {
   return (

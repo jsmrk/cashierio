@@ -77,7 +77,7 @@ const Summary = () => {
             </div>
           </div>
           <div className="text-3xl font-bold">{formatNumber(data.number)}</div>
-          <div className="text-t-grey text-xl">{data.title}</div>
+          <div className="text-grey text-xl">{data.title}</div>
         </Card>
       ))}
     </div>
