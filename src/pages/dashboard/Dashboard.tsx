@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import { recentTransactions } from "@/shared/dashboardTableData";
 import Card from "../../components/Card";
 import SidebarTitle from "../../components/SidebarTitle";
 import Summary from "./Summary";
 import TopSales from "./TopSales";
-import Transactions from "./Transactions";
+import { columns } from "./transactionsTable/columns";
+import { DataTable } from "./transactionsTable/data-table";
 
 const Dashboard = () => {
+  const transactionsData = recentTransactions;
+
   return (
     <div className="h-full w-full grid grid-cols-10 gap-7 text-white ">
       {/* LEFT DIV */}
@@ -16,7 +19,7 @@ const Dashboard = () => {
           <Summary />
         </div>
         <Card className="basis-4/6">
-          <Transactions />
+          <DataTable columns={columns} data={transactionsData} />
         </Card>
       </div>
       {/* RIGHT DIV */}
