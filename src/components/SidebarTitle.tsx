@@ -27,8 +27,10 @@ const SidebarTitle = ({ children, className }: Props) => {
 
   return (
     <div className={`${className} border-b-2 pb-5 border-b-slate-700 `}>
-      <div className={` text-white font-bold text-5xl mb-3`}>{children}</div>
-      <div className="text-xl text-t-grey">{formattedDateTime}</div>
+      <div className={` text-white font-bold text-xl lg:text-3xl mb-1`}>
+        {children}
+      </div>
+      <div className="text-sm text-t-grey">{formattedDateTime}</div>
     </div>
   );
 };
