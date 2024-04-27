@@ -1,6 +1,6 @@
 import SidebarTitle from "../../components/SidebarTitle";
 import Card from "../../components/Card";
-import SalesTransactions from "./SalesTransactions";
+import SalesTransactions from "./SalesTransactions"; // Assuming SalesTransactions renders the table
 import TotalSales from "./TotalSales";
 import TotalQuantity from "./TotalQuantity";
 import TotalRecords from "./TotalRecords";
@@ -13,7 +13,7 @@ const Sales = () => {
         <SidebarTitle className="basis-1/6">Sales</SidebarTitle>
         <Card className="basis-4/6">
           <Input type="search" placeholder="Search Item" className="mb-8" />
-          <SalesTransactions />
+            <SalesTransactions />
         </Card>
       </div>
       <div className="flex flex-col col-span-3 gap-5">

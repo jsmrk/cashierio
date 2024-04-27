@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardHeader from "../../components/CardHeader";
-import { faClipboard, faPesoSign } from "@fortawesome/free-solid-svg-icons";
+import { faPesoSign } from "@fortawesome/free-solid-svg-icons";
 
 const TotalSales = () => {
   return (
