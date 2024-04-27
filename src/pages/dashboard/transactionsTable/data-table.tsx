@@ -39,20 +39,20 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageIndex: 1,
+        pageIndex: 0,
         pageSize: 5,
       },
     },
   });
 
   return (
-    <Card className="text-white border-none ">
-      <CardHeader className="px-7 flex flex-row items-center justify-between">
+    <Card className="text-white">
+      <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Latest Transactions</CardTitle>
+          <CardTitle className="text-xl">Latest Transactions</CardTitle>
           <CardDescription>Latest Transactions in the store.</CardDescription>
         </div>
-        <div className="flex items-center justify-end space-x-2 py-4">
+        <div className="flex items-center justify-end space-x-2">
           <Button
             variant="outline"
             size="sm"
