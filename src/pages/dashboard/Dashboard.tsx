@@ -11,14 +11,14 @@ const Dashboard = () => {
   const transactionsData = recentTransactions;
 
   return (
-    <div className="h-full w-full grid grid-cols-10 gap-7 text-white ">
+    <div className="h-full w-full grid grid-cols-10 gap-5 text-white ">
       {/* LEFT DIV */}
-      <div className="flex flex-col col-span-7 gap-7 ">
-        <SidebarTitle className="basis-1/6">Dashboard</SidebarTitle>
+      <div className="flex flex-col col-span-7 gap-5 ">
+        <SidebarTitle className="basis-1/8">Dashboard</SidebarTitle>
         <div className="basis-1/6">
           <Summary />
         </div>
-        <Card className="basis-4/6">
+        <Card className="basis-5/6">
           <DataTable columns={columns} data={transactionsData} />
         </Card>
       </div>

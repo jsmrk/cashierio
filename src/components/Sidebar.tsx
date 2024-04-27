@@ -46,7 +46,7 @@ const Sidebar = () => {
     "text-primary text-xl px-5 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-200";
 
   return (
-    <div className="h-full w-32  bg-card flex flex-col justify-between items-center rounded-r-[2.5rem]">
+    <div className="h-full w-full bg-card flex flex-col justify-between items-center rounded-r-[2.5rem]">
       <div className="flex flex-col gap-11 justify-center items-center">
         <img
           src={Logo}
@@ -61,7 +61,7 @@ const Sidebar = () => {
                 to={data.path}
                 className={`${
                   activeLink === data.path
-                    ? "bg-dark-100 py-5 pl-5 rounded-l-3xl pr-11 ml-7"
+                    ? "bg-background py-5 pl-5 rounded-l-3xl pr-11 ml-7"
                     : ""
                 }`}
                 onClick={() => handleClick(data.path)}
