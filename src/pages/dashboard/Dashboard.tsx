@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { recentTransactions } from "@/shared/dashboardTableData";
+import { useProducts } from "@/services/queries";
 import Card from "../../components/Card";
 import SidebarTitle from "../../components/SidebarTitle";
 import Summary from "./Summary";
@@ -8,7 +8,7 @@ import { columns } from "./transactionsTable/columns";
 import { DataTable } from "./transactionsTable/data-table";
 
 const Dashboard = () => {
-  const transactionsData = recentTransactions;
+  const { data, isPending, error, isError } = useProducts();
 
   return (
     <div className="h-full w-full grid grid-cols-10 gap-5 text-white ">
@@ -19,7 +19,15 @@ const Dashboard = () => {
           <Summary />
         </div>
         <Card className="basis-5/6">
-          <DataTable columns={columns} data={transactionsData} />
+          {isPending ? (
+            <div>loading...</div>
+          ) : isError ? (
+            <div>Error: {error.message}</div>
+          ) : (
+            <div>
+              <DataTable columns={columns} data={data} />
+            </div>
+          )}
         </Card>
       </div>
       {/* RIGHT DIV */}

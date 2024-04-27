@@ -7,11 +7,11 @@ import Cashier from "./pages/cashier/Cashier";
 
 function App() {
   return (
-    <div className="flex h-screen w-screen bg-dark-100 overflow-hidden">
-      <div className="basis-1/10">
+    <div className="flex h-screen w-screen bg-dark-100">
+      <div className="h-full basis-1/12">
         <Sidebar />
       </div>
-      <div className="p-5 w-full">
+      <div className="p-5 h-full w-full">
         <Routes>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/cashier" element={<Cashier />}></Route>

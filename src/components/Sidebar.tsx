@@ -46,12 +46,12 @@ const Sidebar = () => {
     "text-primary text-xl px-5 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-200";
 
   return (
-    <div className="h-full w-full bg-card flex flex-col justify-between items-center rounded-r-[2.5rem]">
+    <div className="h-screen w-full bg-card flex flex-col justify-between items-center rounded-r-[2.5rem]">
       <div className="flex flex-col gap-11 justify-center items-center">
         <img
           src={Logo}
           alt="logo"
-          className="size-16 rounded-xl mt-11 text-center"
+          className="size-11 rounded-xl mt-11 text-center"
         />
         <ul className="flex flex-col gap-5 justify-center items-center">
           {sidebar.map((data, index) => {
