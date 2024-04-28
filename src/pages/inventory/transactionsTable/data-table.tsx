@@ -77,6 +77,7 @@ export function DataTable<TData, TValue>({
           </Button>
         </div>
       </CardHeader>
+      {/* TABLE CONTTENT */}
       <CardContent>
         <Table>
           <TableHeader>

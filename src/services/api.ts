@@ -14,7 +14,12 @@ export const addProduct = async (data: Products) => {
   await axiosInstance.post("products", data);
 };
 
-// to update Products
+// to delete a Product
+export const deleteProduct = async (id: number) => {
+  await axiosInstance.delete(`products/${id}`);
+};
+
+//to update a Product
 export const updateProduct = async (data: Products) => {
   await axiosInstance.put(`products/${data.id}`, data);
 };

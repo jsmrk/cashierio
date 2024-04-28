@@ -1,6 +1,6 @@
 import { Products } from "@/types/Products";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addProduct, updateProduct } from "./api";
+import { addProduct, deleteProduct, updateProduct } from "./api";
 
 export const useAddProduct = () => {
   const queryClient = useQueryClient();
@@ -21,6 +21,27 @@ export const useAddProduct = () => {
 
     onSettled: async (_, error) => {
       console.log("Settled");
+      if (error) {
+        console.log(error);
+      } else {
+        await queryClient.invalidateQueries({ queryKey: ["products"] });
+      }
+    },
+  });
+};
+
+// to delete a Product
+export const useDeleteProduct = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (id: number) => deleteProduct(id),
+
+    onSuccess: async () => {
+      console.log("deleted Succesfully");
+    },
+
+    onSettled: async (_, error) => {
       if (error) {
         console.log(error);
       } else {

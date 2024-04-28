@@ -11,10 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const Inventory = () => {
   const { data, isPending, error, isError } = useProducts();
-
-  // THIS IS FOR CREATING NEW DATA
   const { register, handleSubmit, reset } = useForm<Products>();
-
   const addProductMutation = useAddProduct();
 
   const handleAddProduct: SubmitHandler<Products> = (data) => {
