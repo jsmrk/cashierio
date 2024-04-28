@@ -43,6 +43,7 @@ export const columns: ColumnDef<Products>[] = [
         <div className="flex gap-4 justify-center">
           <button>
             <FontAwesomeIcon className="text-green-300" icon={faPenToSquare} />
+            test
           </button>
           <DeleteButton id={data.id} />
         </div>
