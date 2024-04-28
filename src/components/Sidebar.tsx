@@ -6,6 +6,7 @@ import {
   faReceipt,
   faCashRegister,
   faGear,
+  faBoxesStacked,
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -14,12 +15,17 @@ const sidebar = [
   {
     title: "Dashboard",
     icon: <FontAwesomeIcon icon={faHouse} />,
-    path: "/dashboard",
+    path: "/",
   },
   {
     title: "Cashier",
     icon: <FontAwesomeIcon icon={faCashRegister} />,
     path: "/cashier",
+  },
+  {
+    title: "Inventory",
+    icon: <FontAwesomeIcon icon={faBoxesStacked} />,
+    path: "/inventory",
   },
   {
     title: "Sales",
@@ -36,7 +42,7 @@ const sidebar = [
 // type Props = {};
 
 const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState("/dashboard");
+  const [activeLink, setActiveLink] = useState("/");
 
   const handleClick = (path: string) => {
     setActiveLink(path);
@@ -59,11 +65,6 @@ const Sidebar = () => {
               <NavLink
                 key={index}
                 to={data.path}
-                className={`${
-                  activeLink === data.path
-                    ? "bg-background py-5 pl-5 rounded-l-3xl pr-11 ml-7"
-                    : ""
-                }`}
                 onClick={() => handleClick(data.path)}
               >
                 <li

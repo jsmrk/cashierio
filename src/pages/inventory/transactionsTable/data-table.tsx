@@ -26,11 +26,17 @@ import { Button } from "@/components/ui/button";
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  tableHeader: string;
+  tableDescription: string;
+  pageSize: number;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  tableHeader,
+  tableDescription,
+  pageSize,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -40,17 +46,17 @@ export function DataTable<TData, TValue>({
     initialState: {
       pagination: {
         pageIndex: 0,
-        pageSize: 5,
+        pageSize: pageSize,
       },
     },
   });
 
   return (
     <Card className="text-white">
-      <CardHeader className="flex flex-row items-center justify-between">
+      <CardHeader className="flex flex-row items-center justify-between py-8 px-11">
         <div>
-          <CardTitle className="text-xl">Latest Transactions</CardTitle>
-          <CardDescription>Latest Transactions in the store.</CardDescription>
+          <CardTitle className="text-xl">{tableHeader}</CardTitle>
+          <CardDescription>{tableDescription}</CardDescription>
         </div>
         <div className="flex items-center justify-end space-x-2">
           <Button
@@ -71,6 +77,7 @@ export function DataTable<TData, TValue>({
           </Button>
         </div>
       </CardHeader>
+      {/* TABLE CONTTENT */}
       <CardContent>
         <Table>
           <TableHeader>

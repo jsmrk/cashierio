@@ -4,6 +4,7 @@ import Sales from "./pages/sales/Sales";
 import Settings from "./pages/Settings";
 import Sidebar from "./components/Sidebar";
 import Cashier from "./pages/cashier/Cashier";
+import Inventory from "./pages/inventory/Inventory";
 
 function App() {
   return (
@@ -13,8 +14,9 @@ function App() {
       </div>
       <div className="p-5 h-full w-full">
         <Routes>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/" element={<Dashboard />}></Route>
           <Route path="/cashier" element={<Cashier />}></Route>
+          <Route path="/inventory" element={<Inventory />}></Route>
           <Route path="/sales" element={<Sales />}></Route>
           <Route path="/settings" element={<Settings />}></Route>
         </Routes>
