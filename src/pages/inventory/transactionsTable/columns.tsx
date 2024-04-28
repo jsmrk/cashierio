@@ -15,17 +15,30 @@ export const columns: ColumnDef<Products>[] = [
     header: "Stocks",
   },
   {
+    accessorKey: "originalPrice",
+    header: "(Orig) Price",
+    cell: ({ row }) => {
+      const totalPayment = parseFloat(row.getValue("originalPrice"));
+      const formatted = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+      }).format(totalPayment);
+
+      return <div> {formatted}</div>;
+    },
+  },
+  {
     accessorKey: "price",
     header: "Price",
-    // cell: ({ row }) => {
-    //   const totalPayment = parseFloat(row.getValue("totalPayment"));
-    //   const formatted = new Intl.NumberFormat("en-PH", {
-    //     style: "currency",
-    //     currency: "PHP",
-    //   }).format(totalPayment);
+    cell: ({ row }) => {
+      const totalPayment = parseFloat(row.getValue("price"));
+      const formatted = new Intl.NumberFormat("en-PH", {
+        style: "currency",
+        currency: "PHP",
+      }).format(totalPayment);
 
-    //   return <div>{formatted}</div>;
-    // },
+      return <div> {formatted}</div>;
+    },
   },
   // {
   //   accessorKey: "date",
