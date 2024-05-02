@@ -1,28 +1,27 @@
-import { Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Sales from "./pages/sales/Sales";
-import Settings from "./pages/Settings";
-import Sidebar from "./components/Sidebar";
-import Cashier from "./pages/cashier/Cashier";
-import Inventory from "./pages/inventory/Inventory";
+import { useState, useEffect } from "react";
+import supabase from "./utils/supabase";
+import AuthPage from "./pages/authPage/AuthPage";
+import { Layout } from "./pages/Layout";
+import { Session } from "@supabase/supabase-js";
 
 function App() {
-  return (
-    <div className="flex h-screen w-screen bg-dark-100">
-      <div className="h-full basis-1/12">
-        <Sidebar />
-      </div>
-      <div className="p-5 h-full w-full">
-        <Routes>
-          <Route path="/" element={<Dashboard />}></Route>
-          <Route path="/cashier" element={<Cashier />}></Route>
-          <Route path="/inventory" element={<Inventory />}></Route>
-          <Route path="/sales" element={<Sales />}></Route>
-          <Route path="/settings" element={<Settings />}></Route>
-        </Routes>
-      </div>
-    </div>
-  );
+  const [session, setSession] = useState<Session | null>(null); // Define type for session
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session); // Update state with session
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session); // Update state with session on change
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
+  return !session ? <AuthPage /> : <Layout />;
 }
 
 export default App;

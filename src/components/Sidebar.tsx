@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import supabase from "@/utils/supabase";
 
 const sidebar = [
   {
@@ -48,6 +49,13 @@ const Sidebar = () => {
     setActiveLink(path);
   };
 
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Sign out error:", error);
+    }
+  };
+
   const buttonStyle =
     "text-primary text-xl px-5 py-3 rounded-xl hover:bg-primary hover:text-white transition-all duration-200";
 
@@ -79,7 +87,7 @@ const Sidebar = () => {
           })}
         </ul>
       </div>
-      <button className={`${buttonStyle} mb-7`}>
+      <button className={`${buttonStyle} mb-7`} onClick={handleSignOut}>
         <FontAwesomeIcon icon={faRightFromBracket} />
       </button>
     </div>

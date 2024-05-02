@@ -28,13 +28,6 @@
       "price": 12345
     },
     {
-      "id": 10,
-      "name": "product 10",
-      "stock": 123,
-      "originalPrice": 123,
-      "price": 12345
-    },
-    {
       "name": "asdas",
       "stock": "12",
       "originalPrice": "3141",
