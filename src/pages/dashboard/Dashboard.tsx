@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useProducts } from "@/services/queries";
+import { useProducts } from "@/services/fakeServer/queries-fakeserver";
 import Card from "../../components/Card";
 import SidebarTitle from "../../components/SidebarTitle";
 import Summary from "./Summary";

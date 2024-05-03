@@ -1,9 +1,28 @@
-import React from "react";
+import { useProducts } from "@/services/queries";
 
-type Props = {};
+const Settings = () => {
+  const { data, isLoading, error, isError } = useProducts();
 
-const Settings = (props: Props) => {
-  return <div className="text-primary text-3xl">Settings</div>;
+  return (
+    <>
+      {isLoading ? (
+        <div>loading...</div>
+      ) : isError ? (
+        <div>
+          Error: {error.message || "An error occurred fetching inventory."}
+        </div>
+      ) : (
+        <div>
+          {data?.map((d) => (
+            <div key={d.id}>
+              {d.description}
+              {d.product_name}
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
 };
 
 export default Settings;

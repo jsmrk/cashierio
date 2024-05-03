@@ -1,10 +1,10 @@
 import Sidebar from "@/components/Sidebar";
-import { Settings } from "lucide-react";
 import { Routes, Route } from "react-router-dom";
 import Cashier from "./cashier/Cashier";
 import Dashboard from "./dashboard/Dashboard";
 import Inventory from "./inventory/Inventory";
 import Sales from "./sales/Sales";
+import Settings from "./Settings";
 
 export const Layout = () => {
   return (
