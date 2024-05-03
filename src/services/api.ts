@@ -9,10 +9,16 @@ export const getProducts = async (): Promise<Product[]> => {
   return products;
 };
 
-export const addProducts = async (): Promise<Product[]> => {
-  const { data: products, error } = await supabase
-    .from("inventory")
-    .select("*");
+export const addProduct = async (product: Product) => {
+  const { error } = await supabase.from("inventory").insert([product]);
   if (error) throw error;
-  return products;
 };
+
+// export const getProductId = async (): Promise<number[]> => {
+//   const { data: productsID, error } = await supabase
+//     .from("inventory")
+//     .select("id");
+//   if (error) throw error;
+//   const productIds = productsID.map((product) => product.id);
+//   return productIds;
+// };

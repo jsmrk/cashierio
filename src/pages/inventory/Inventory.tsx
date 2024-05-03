@@ -1,22 +1,23 @@
 import { DataTable } from "./transactionsTable/data-table";
 import { columns } from "./transactionsTable/columns";
-// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import SidebarTitle from "@/components/SidebarTitle";
 import { useProducts } from "@/services/queries";
-import { Card } from "@/components/ui/card";
-// import { SubmitHandler, useForm } from "react-hook-form";
-// import { Button } from "@/components/ui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Product } from "@/types/Products";
+import { useAddProduct } from "@/services/mutation";
 
 const Inventory = () => {
   const { data, isPending, error, isError } = useProducts();
-  // const { register, handleSubmit, reset } = useForm<Product>();
-  // const addProductMutation = useAddProduct();
+  const { register, handleSubmit, reset } = useForm<Product>();
+  const addProductMutation = useAddProduct();
 
-  // const handleAddProduct: SubmitHandler<Product> = (data) => {
-  //   addProductMutation.mutate(data);
-  //   reset();
-  // };
+  const handleAddProduct: SubmitHandler<Product> = (data) => {
+    addProductMutation.mutate(data);
+    reset();
+  };
 
   return (
     <div className="flex h-full gap-5">
@@ -46,23 +47,24 @@ const Inventory = () => {
         </Card>
       </div>
       {/* RIGHT */}
-      {/* <Card className="basis-2/6">
+      <Card className="basis-2/6">
         <CardHeader>
           <CardTitle>Add Product</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(handleAddProduct)}>
-            <Input placeholder="Name" {...register("name")} />
+            <Input placeholder="Name" {...register("product_name")} />
+            <Input placeholder="Description" {...register("description")} />
             <Input type="number" placeholder="Stocks" {...register("stock")} />
             <Input
               type="number"
               placeholder="Original"
-              {...register("originalPrice")}
+              {...register("original_price")}
             />
             <Input
               type="number"
               placeholder="Price"
-              {...register("sellingPrice")}
+              {...register("selling_price")}
             />
             <Button
               type="submit"
@@ -75,7 +77,7 @@ const Inventory = () => {
             </Button>
           </form>
         </CardContent>
-      </Card> */}
+      </Card>
     </div>
   );
 };
