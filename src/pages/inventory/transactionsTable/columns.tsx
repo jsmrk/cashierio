@@ -1,9 +1,9 @@
 import { Product } from "@/types/Products";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
-// import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { DeleteButton } from "./tableActions";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DeleteButton } from "./tableActions";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -38,22 +38,22 @@ export const columns: ColumnDef<Product>[] = [
       return formatToPHP(price);
     },
   },
-  // {
-  //   accessorKey: "actions",
-  //   header: "Actions",
-  //   cell: ({ row }) => {
-  //     const data = row.original;
-  //     return (
-  //       <div className="flex gap-4 justify-center">
-  //         <button>
-  //           <FontAwesomeIcon className="text-green-300" icon={faPenToSquare} />
-  //           test
-  //         </button>
-  //         <DeleteButton id={data.id} />
-  //       </div>
-  //     );
-  //   },
-  // },
+  {
+    accessorKey: "actions",
+    header: "Actions",
+    cell: ({ row }) => {
+      const data = row.original;
+      return (
+        <div className="flex gap-4 justify-center">
+          <button>
+            <FontAwesomeIcon className="text-green-300" icon={faPenToSquare} />
+            test
+          </button>
+          <DeleteButton id={data.id} />
+        </div>
+      );
+    },
+  },
   // {
   //   accessorKey: "date",
   //   header: "Date & Time"

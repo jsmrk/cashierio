@@ -14,6 +14,11 @@ export const addProduct = async (product: Product) => {
   if (error) throw error;
 };
 
+export const deleteProduct = async (id: number) => {
+  const { error } = await supabase.from("inventory").delete().eq("id", id);
+  if (error) throw error;
+};
+
 // export const getProductId = async (): Promise<number[]> => {
 //   const { data: productsID, error } = await supabase
 //     .from("inventory")
