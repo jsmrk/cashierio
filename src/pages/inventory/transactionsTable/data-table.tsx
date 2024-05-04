@@ -29,6 +29,7 @@ interface DataTableProps<TData, TValue> {
   tableHeader: string;
   tableDescription: string;
   pageSize: number;
+  action: React.ReactNode;
 }
 
 export function DataTable<TData, TValue>({
@@ -37,6 +38,7 @@ export function DataTable<TData, TValue>({
   tableHeader,
   tableDescription,
   pageSize,
+  action,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -55,7 +57,11 @@ export function DataTable<TData, TValue>({
     <Card className="text-white">
       <CardHeader className="flex flex-row items-center justify-between py-8 px-11">
         <div>
-          <CardTitle className="text-xl">{tableHeader}</CardTitle>
+          <CardTitle className="text-xl= flex gap-5 items-center">
+            {tableHeader}
+            {action}
+          </CardTitle>
+
           <CardDescription>{tableDescription}</CardDescription>
         </div>
         <div className="flex items-center justify-end space-x-2">

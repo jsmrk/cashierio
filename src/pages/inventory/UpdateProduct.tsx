@@ -7,11 +7,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+
 import { Product } from "@/types/Products";
 import { useUpdateProduct } from "@/services/mutation";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -36,13 +38,13 @@ const UpdateProduct = (data: Product) => {
       <DialogTrigger asChild>
         <FontAwesomeIcon className="text-green-200" icon={faPenToSquare} />
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[650px] p-11">
         <DialogHeader>
           <DialogTitle>Edit Product</DialogTitle>
           <DialogDescription>{}</DialogDescription>
         </DialogHeader>
         <form
-          className="grid gap-4 py-4"
+          className="grid gap-5 py-4"
           onSubmit={handleSubmit(handleUpdateProduct)}
         >
           <div className="grid grid-cols-4 items-center gap-4">
@@ -51,7 +53,7 @@ const UpdateProduct = (data: Product) => {
             </Label>
             <Input
               defaultValue={data.id}
-              {...register("product_name")}
+              {...register("id")}
               className="col-span-3"
               disabled={true}
             />

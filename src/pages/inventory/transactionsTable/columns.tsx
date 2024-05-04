@@ -1,7 +1,8 @@
 import { Product } from "@/types/Products";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
-import { DeleteButton, UpdateButton } from "./tableActions";
+import DeleteProduct from "../DeleteProduct";
+import UpdateProduct from "../UpdateProduct";
 
 export const columns: ColumnDef<Product>[] = [
   {
@@ -42,8 +43,8 @@ export const columns: ColumnDef<Product>[] = [
     cell: ({ row }) => {
       const data = row.original;
       return (
-        <div key={data.id} className="flex gap-4 justify-center">
-          <UpdateButton
+        <div className="flex gap-4 justify-center">
+          <UpdateProduct
             id={data.id}
             product_name={data.product_name}
             stock={data.stock}
@@ -51,7 +52,7 @@ export const columns: ColumnDef<Product>[] = [
             selling_price={data.selling_price}
             description={data.description}
           />
-          <DeleteButton id={data.id} />
+          <DeleteProduct id={data.id} />
         </div>
       );
     },
