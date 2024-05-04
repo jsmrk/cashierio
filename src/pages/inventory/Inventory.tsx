@@ -53,17 +53,17 @@ const Inventory = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(handleAddProduct)}>
-            <Input placeholder="Name" {...register("product_name")} />
+            <Input placeholder="Product Name" {...register("product_name")} />
             <Input placeholder="Description" {...register("description")} />
             <Input type="number" placeholder="Stocks" {...register("stock")} />
             <Input
               type="number"
-              placeholder="Original"
+              placeholder="Original Price"
               {...register("original_price")}
             />
             <Input
               type="number"
-              placeholder="Price"
+              placeholder="Selling Price"
               {...register("selling_price")}
             />
             <Button

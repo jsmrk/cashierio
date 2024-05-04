@@ -1,7 +1,8 @@
-import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useDeleteProduct } from "@/services/mutation";
+import UpdateProduct from "@/components/UpdateProductDialogue";
+import { Product } from "@/types/Products";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export const DeleteButton: React.FC<{ id?: number }> = ({ id }) => {
   const deleteProductMutation = useDeleteProduct();
@@ -23,22 +24,15 @@ export const DeleteButton: React.FC<{ id?: number }> = ({ id }) => {
   );
 };
 
-export const UpdateButton: React.FC<{ id?: number }> = ({ id }) => {
-  const deleteProductMutation = useDeleteProduct();
-
-  const handleDelete = async () => {
-    if (!id) {
-      console.error("Missing product ID for deletion.");
-      return;
-    }
-
-    await deleteProductMutation.mutateAsync(id);
-    console.log("Success");
-  };
-
+export const UpdateButton = (data: Product) => {
   return (
-    <button onClick={handleDelete}>
-      <FontAwesomeIcon className="text-red-300" icon={faTrash} />
-    </button>
+    <UpdateProduct
+      id={data.id}
+      product_name={data.product_name}
+      stock={data.stock}
+      original_price={data.original_price}
+      selling_price={data.selling_price}
+      description={data.description}
+    />
   );
 };
