@@ -4,5 +4,5 @@ export interface Product {
   stock: number;
   original_price: number;
   selling_price: number;
-  description: string;
+  description?: string;
 }

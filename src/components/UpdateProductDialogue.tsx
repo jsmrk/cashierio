@@ -13,8 +13,24 @@ import { Input } from "./ui/input";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Product } from "@/types/Products";
+import { useUpdateProduct } from "@/services/mutation";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 const UpdateProduct = (data: Product) => {
+  const updateProductMutation = useUpdateProduct();
+  const { register, handleSubmit } = useForm<Product>();
+
+  const handleUpdateProduct: SubmitHandler<Product> = (updatedProduct) => {
+    updateProductMutation.mutate({
+      id: data.id,
+      product_name: updatedProduct.product_name,
+      stock: updatedProduct.stock,
+      original_price: updatedProduct.original_price,
+      selling_price: updatedProduct.selling_price,
+      description: updatedProduct.description,
+    });
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -25,49 +41,78 @@ const UpdateProduct = (data: Product) => {
           <DialogTitle>Edit Product</DialogTitle>
           <DialogDescription>{}</DialogDescription>
         </DialogHeader>
-        <form className="grid gap-4 py-4">
+        <form
+          className="grid gap-4 py-4"
+          onSubmit={handleSubmit(handleUpdateProduct)}
+        >
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
+            <Label htmlFor="id" className="text-right">
+              ID :
             </Label>
-            <Input defaultValue={data.product_name} className="col-span-3" />
+            <Input
+              defaultValue={data.id}
+              {...register("product_name")}
+              className="col-span-3"
+              disabled={true}
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Description
+            <Label htmlFor="name" className="text-right">
+              Name :
+            </Label>
+            <Input
+              defaultValue={data.product_name}
+              {...register("product_name")}
+              className="col-span-3"
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="description" className="text-right">
+              Description :
             </Label>
             <Input
               type="text"
               defaultValue={data.description}
+              {...register("description")}
               className="col-span-3"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Description
+            <Label htmlFor="stock" className="text-right">
+              Stock :
             </Label>
             <Input
-              type="number"
               defaultValue={data.stock}
+              {...register("stock")}
               className="col-span-3"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              (Orig) Price
+            <Label htmlFor="originalprice" className="text-right">
+              (Orig) Price :
             </Label>
-            <Input defaultValue={data.original_price} className="col-span-3" />
+            <Input
+              defaultValue={data.original_price}
+              {...register("original_price")}
+              className="col-span-3"
+            />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              (Sell) Price
+            <Label htmlFor="sellingprice" className="text-right">
+              (Sell) Price :
             </Label>
-            <Input defaultValue={data.selling_price} className="col-span-3" />
+            <Input
+              defaultValue={data.selling_price}
+              {...register("selling_price")}
+              className="col-span-3"
+            />
           </div>
+          <DialogFooter>
+            <Button type="submit" disabled={updateProductMutation.isPending}>
+              Save changes
+            </Button>
+          </DialogFooter>
         </form>
-        <DialogFooter>
-          <Button type="submit">Save changes</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
