@@ -23,8 +23,7 @@ const Inventory = () => {
                 columns={InventoryColumn}
                 data={data}
                 pageSize={10}
-                tableHeader=""
-                tableDescription=""
+                tableHeader="All Products"
                 action={<AddProduct />}
               />
             </div>

@@ -16,13 +16,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { Button } from "@/components/ui/button";
 import React from "react";
@@ -32,7 +26,6 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   tableHeader: string;
-  tableDescription: string;
   pageSize: number;
   action: React.ReactNode;
 }
@@ -41,7 +34,6 @@ export function InventoryTable<TData, TValue>({
   columns,
   data,
   tableHeader,
-  tableDescription,
   pageSize,
   action,
 }: DataTableProps<TData, TValue>) {
@@ -68,18 +60,20 @@ export function InventoryTable<TData, TValue>({
   return (
     <Card className="text-white">
       <CardHeader className="flex flex-row items-center justify-between py-8 px-11">
-        <div className="basis-2/6">
-          <CardTitle className="text-xl flex gap-5 items-center justify-between w-full">
-            {tableHeader}
-            <TableInput
-              value={globalFilter ?? ""}
-              onChange={(value) => setGlobalFilter(String(value))}
-              placeholder="Search product"
-            />
-            {action}
+        <div className="">
+          <CardTitle className="text-xl gap-5 items-center  w-full">
+            <div className="flex gap-5 items-center">
+              {tableHeader}
+              {action}
+            </div>
           </CardTitle>
-
-          <CardDescription>{tableDescription}</CardDescription>
+        </div>
+        <div className="basis-3/6">
+          <TableInput
+            value={globalFilter ?? ""}
+            onChange={(value) => setGlobalFilter(String(value))}
+            placeholder="Search product"
+          />
         </div>
         <div className="flex items-center justify-end space-x-2">
           <Button

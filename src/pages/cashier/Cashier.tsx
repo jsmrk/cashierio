@@ -8,12 +8,11 @@ const Cashier = () => {
   const { data, isPending, error, isError } = useProducts();
 
   return (
-    <div className="h-full w-full grid grid-cols-3 gap-7 text-white">
+    <div className="h-full w-full flex gap-7 text-white">
       {/* Left */}
-      <div className="flex flex-col col-span-2 ">
-        <SidebarTitle className="basis-1/6">Jess Mark A. Baguio</SidebarTitle>
-
-        <Card className="mt-5 h-full">
+      <div className="flex flex-col basis-4/6 ">
+        <SidebarTitle className="basis-1/12">Jess Mark A. Baguio</SidebarTitle>
+        <Card className="mt-5 h-full basis-11/12">
           {isPending ? (
             <div>loading...</div>
           ) : isError ? (
@@ -24,8 +23,7 @@ const Cashier = () => {
                 columns={MenuColumn}
                 data={data}
                 pageSize={10}
-                tableHeader=""
-                tableDescription=""
+                tableHeader="Available Products"
                 action=<></>
               />
             </div>
@@ -33,7 +31,7 @@ const Cashier = () => {
         </Card>
       </div>
       {/* Right */}
-      <Card className="flex flex-col col-span-1 gap-5">2</Card>
+      <Card className="basis-2/6">2</Card>
     </div>
   );
 };
