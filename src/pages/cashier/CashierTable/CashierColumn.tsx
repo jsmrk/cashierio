@@ -2,28 +2,20 @@ import { Product } from "@/types/Products";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
 
-export const MenuColumn: ColumnDef<Product>[] = [
-  {
-    accessorKey: "id",
-    header: "ID",
-  },
+export const CashierColumn: ColumnDef<Product>[] = [
   {
     accessorKey: "product_name",
     header: "Products",
   },
   {
-    accessorKey: "description",
-    header: "Description",
+    accessorKey: "quantity",
+    header: "QTY",
   },
   {
-    accessorKey: "stock",
-    header: "Stocks",
-  },
-  {
-    accessorKey: "selling_price",
+    accessorKey: "price",
     header: "Price",
     cell: ({ row }) => {
-      const price = parseFloat(row.getValue("selling_price"));
+      const price = parseFloat(row.getValue("price"));
       return formatToPHP(price);
     },
   },

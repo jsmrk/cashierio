@@ -3,12 +3,16 @@ import SidebarTitle from "@/components/SidebarTitle";
 import { useProducts } from "@/services/queries";
 import { InventoryTable } from "../../components/InventoryTable";
 import { MenuColumn } from "./MenuColumn";
+import { CashierTable } from "./CashierTable/CashierTable";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const Cashier = () => {
   const { data, isPending, error, isError } = useProducts();
 
   return (
-    <div className="h-full w-full flex gap-7 text-white">
+    <div className="h-full w-full flex gap-5 text-white">
       {/* Left */}
       <div className="flex flex-col basis-4/6 ">
         <SidebarTitle className="basis-1/12">Jess Mark A. Baguio</SidebarTitle>
@@ -31,7 +35,40 @@ const Cashier = () => {
         </Card>
       </div>
       {/* Right */}
-      <Card className="basis-2/6">2</Card>
+      <Card className="flex flex-col basis-2/6">
+        <div className="basis-4/6">
+          <CashierTable
+            columns={[]}
+            data={[]}
+            tableHeader={"Transaction"}
+            pageSize={5}
+          />
+        </div>
+        <div className="grid gap-5 basis-2/6">
+          <div className="grid grid-cols-5 items-center gap-4">
+            <Label htmlFor="total" className="text-right text-xl">
+              Total :
+            </Label>
+            <Input disabled className="col-span-4" />
+          </div>
+          <div className="grid grid-cols-5 items-center gap-4">
+            <Label htmlFor="cash" className="text-right text-xl">
+              Cash :
+            </Label>
+            <Input className="col-span-4" />
+          </div>
+          <div className="grid grid-cols-5 items-center gap-4">
+            <Label htmlFor="Change" className="text-right text-xl">
+              Change :
+            </Label>
+            <Input disabled className="col-span-4" />
+          </div>
+          <div className="flex justify-end gap-5">
+            <Button className="bg-grey">Reset</Button>
+            <Button>Confirm Transaction</Button>
+          </div>
+        </div>
+      </Card>
     </div>
   );
 };
