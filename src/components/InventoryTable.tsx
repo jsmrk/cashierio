@@ -37,7 +37,7 @@ interface DataTableProps<TData, TValue> {
   action: React.ReactNode;
 }
 
-export function DataTable<TData, TValue>({
+export function InventoryTable<TData, TValue>({
   columns,
   data,
   tableHeader,

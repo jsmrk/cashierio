@@ -1,9 +1,9 @@
-import { DataTable } from "./transactionsTable/data-table";
-import { columns } from "./transactionsTable/columns";
+import { InventoryTable } from "../../components/InventoryTable";
 import { Card } from "@/components/ui/card";
 import SidebarTitle from "@/components/SidebarTitle";
 import { useProducts } from "@/services/queries";
 import AddProduct from "./AddProduct";
+import { InventoryColumn } from "./InventoryColumn";
 
 const Inventory = () => {
   const { data, isPending, error, isError } = useProducts();
@@ -19,8 +19,8 @@ const Inventory = () => {
             <div>Error: {error.message}</div>
           ) : (
             <div>
-              <DataTable
-                columns={columns}
+              <InventoryTable
+                columns={InventoryColumn}
                 data={data}
                 pageSize={10}
                 tableHeader=""

@@ -1,10 +1,10 @@
 import { Product } from "@/types/Products";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
-import DeleteProduct from "../DeleteProduct";
-import UpdateProduct from "../UpdateProduct";
+import DeleteProduct from "./DeleteProduct";
+import UpdateProduct from "./UpdateProduct";
 
-export const columns: ColumnDef<Product>[] = [
+export const InventoryColumn: ColumnDef<Product>[] = [
   {
     accessorKey: "id",
     header: "ID",

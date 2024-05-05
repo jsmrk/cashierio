@@ -1,9 +1,12 @@
 import Card from "@/components/Card";
 import SidebarTitle from "@/components/SidebarTitle";
-import { Input } from "@/components/ui/input";
-import CashierTable from "./CashierTable";
+import { useProducts } from "@/services/queries";
+import { InventoryTable } from "../../components/InventoryTable";
+import { MenuColumn } from "./MenuColumn";
 
 const Cashier = () => {
+  const { data, isPending, error, isError } = useProducts();
+
   return (
     <div className="h-full w-full grid grid-cols-3 gap-7 text-white">
       {/* Left */}
@@ -11,8 +14,22 @@ const Cashier = () => {
         <SidebarTitle className="basis-1/6">Jess Mark A. Baguio</SidebarTitle>
 
         <Card className="mt-5 h-full">
-          <Input type="search" placeholder="Search Item" className="mb-8" />
-          <CashierTable />
+          {isPending ? (
+            <div>loading...</div>
+          ) : isError ? (
+            <div>Error: {error.message}</div>
+          ) : (
+            <div>
+              <InventoryTable
+                columns={MenuColumn}
+                data={data}
+                pageSize={10}
+                tableHeader=""
+                tableDescription=""
+                action=<></>
+              />
+            </div>
+          )}
         </Card>
       </div>
       {/* Right */}
