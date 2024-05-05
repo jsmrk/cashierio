@@ -1,7 +1,6 @@
 import { DataTable } from "./transactionsTable/data-table";
 import { columns } from "./transactionsTable/columns";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import SidebarTitle from "@/components/SidebarTitle";
 import { useProducts } from "@/services/queries";
 import AddProduct from "./AddProduct";
@@ -12,7 +11,6 @@ const Inventory = () => {
   return (
     <div className="flex h-full w-full flex-col gap-5">
       <SidebarTitle className={"text-white"}>Inventory</SidebarTitle>
-      <Input className="border-2-white"></Input>
       <Card className="h-full">
         <div>
           {isPending ? (
@@ -25,7 +23,7 @@ const Inventory = () => {
                 columns={columns}
                 data={data}
                 pageSize={10}
-                tableHeader="List of Products"
+                tableHeader=""
                 tableDescription=""
                 action={<AddProduct />}
               />

@@ -4,6 +4,7 @@ import {
   getCoreRowModel,
   useReactTable,
   getPaginationRowModel,
+  getFilteredRowModel,
 } from "@tanstack/react-table";
 
 import {
@@ -14,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 import {
   Card,
   CardContent,
@@ -21,7 +23,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+
 import { Button } from "@/components/ui/button";
+import React from "react";
+import { TableInput } from "@/components/TableSearchInput";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -40,6 +45,8 @@ export function DataTable<TData, TValue>({
   pageSize,
   action,
 }: DataTableProps<TData, TValue>) {
+  const [globalFilter, setGlobalFilter] = React.useState("");
+
   const table = useReactTable({
     data,
     columns,
@@ -51,14 +58,24 @@ export function DataTable<TData, TValue>({
         pageSize: pageSize,
       },
     },
+    state: {
+      globalFilter,
+    },
+    onGlobalFilterChange: setGlobalFilter,
+    getFilteredRowModel: getFilteredRowModel(),
   });
 
   return (
     <Card className="text-white">
       <CardHeader className="flex flex-row items-center justify-between py-8 px-11">
-        <div>
-          <CardTitle className="text-xl= flex gap-5 items-center">
+        <div className="basis-2/6">
+          <CardTitle className="text-xl flex gap-5 items-center justify-between w-full">
             {tableHeader}
+            <TableInput
+              value={globalFilter ?? ""}
+              onChange={(value) => setGlobalFilter(String(value))}
+              placeholder="Search product"
+            />
             {action}
           </CardTitle>
 

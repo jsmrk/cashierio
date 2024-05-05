@@ -29,8 +29,9 @@ const AddProduct = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>
+        <Button className="flex gap-2">
           <FontAwesomeIcon icon={faAdd} />
+          Add Product
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[650px] p-11">
