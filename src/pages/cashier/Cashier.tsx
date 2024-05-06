@@ -1,15 +1,17 @@
 import Card from "@/components/Card";
 import SidebarTitle from "@/components/SidebarTitle";
-import { useProducts } from "@/services/queries";
-import { InventoryTable } from "../../components/InventoryTable";
+import { useAvailableProducts } from "@/services/queries";
 import { MenuColumn } from "./MenuColumn";
 import { CashierTable } from "./CashierTable/CashierTable";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CashierColumn } from "./CashierTable/CashierColumn";
+import { currentSelectedProduct } from "./CashierTable/SelectedData";
+import { MenuTable } from "./MenuTable";
 
 const Cashier = () => {
-  const { data, isPending, error, isError } = useProducts();
+  const { data, isPending, error, isError } = useAvailableProducts();
 
   return (
     <div className="h-full w-full flex gap-5 text-white">
@@ -23,7 +25,7 @@ const Cashier = () => {
             <div>Error: {error.message}</div>
           ) : (
             <div>
-              <InventoryTable
+              <MenuTable
                 columns={MenuColumn}
                 data={data}
                 pageSize={10}
@@ -38,8 +40,8 @@ const Cashier = () => {
       <Card className="flex flex-col basis-2/6">
         <div className="basis-4/6">
           <CashierTable
-            columns={[]}
-            data={[]}
+            columns={CashierColumn}
+            data={currentSelectedProduct}
             tableHeader={"Transaction"}
             pageSize={5}
           />

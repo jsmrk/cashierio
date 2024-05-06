@@ -9,6 +9,15 @@ export const getProducts = async (): Promise<Product[]> => {
   return products;
 };
 
+export const getAvailableProducts = async (): Promise<Product[]> => {
+  const { data: products, error } = await supabase
+    .from("inventory")
+    .select("*")
+    .gt("stock", 0);
+  if (error) throw error;
+  return products;
+};
+
 export const addProduct = async (product: Product) => {
   const { error } = await supabase.from("inventory").insert([product]);
   if (error) throw error;

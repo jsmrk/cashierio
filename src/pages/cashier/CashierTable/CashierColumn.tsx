@@ -1,8 +1,12 @@
-import { Product } from "@/types/Products";
+import { SelectedProduct } from "@/types/SelectedProducts";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
 
-export const CashierColumn: ColumnDef<Product>[] = [
+export const CashierColumn: ColumnDef<SelectedProduct>[] = [
+  {
+    accessorKey: "id",
+    header: "ID",
+  },
   {
     accessorKey: "product_name",
     header: "Products",
