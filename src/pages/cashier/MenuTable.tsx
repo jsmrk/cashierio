@@ -39,12 +39,6 @@ export function MenuTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [globalFilter, setGlobalFilter] = React.useState("");
 
-  // const [id, setId] = useState<number>();
-
-  // const handleOnclick = (id: number)=> {
-
-  // }
-
   const table = useReactTable({
     data,
     columns,
@@ -65,6 +59,7 @@ export function MenuTable<TData, TValue>({
 
   return (
     <Card className="text-white">
+      <div>{}</div>
       <CardHeader className="flex flex-row items-center justify-between py-8 px-11">
         <div className="">
           <CardTitle className="text-xl gap-5 items-center  w-full">
@@ -104,7 +99,6 @@ export function MenuTable<TData, TValue>({
       <CardContent>
         <Table>
           <TableHeader>
-            {JSON.stringify(table.getState().rowSelection, null, 2)}
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -128,7 +122,6 @@ export function MenuTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  // onClick={()=>}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>

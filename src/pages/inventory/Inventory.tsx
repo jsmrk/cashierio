@@ -1,7 +1,7 @@
 import { InventoryTable } from "./InventoryTable";
 import { Card } from "@/components/ui/card";
 import SidebarTitle from "@/components/SidebarTitle";
-import { useProducts } from "@/services/queries";
+import { useProducts } from "@/services/queries/inventoryQueries";
 import AddProduct from "./AddProduct";
 import { InventoryColumn } from "./InventoryColumn";
 

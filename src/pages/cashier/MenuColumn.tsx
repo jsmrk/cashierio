@@ -1,6 +1,7 @@
 import { Product } from "@/types/Products";
 import { formatToPHP } from "@/utils/formatToPHP";
 import { ColumnDef } from "@tanstack/react-table";
+import SelectedQuantity from "./SelectedQuantity";
 
 export const MenuColumn: ColumnDef<Product>[] = [
   {
@@ -25,6 +26,21 @@ export const MenuColumn: ColumnDef<Product>[] = [
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("selling_price"));
       return formatToPHP(price);
+    },
+  },
+  {
+    header: "Action",
+    cell: ({ row }) => {
+      const data = row.original;
+      return (
+        <SelectedQuantity
+          id={data.id}
+          product_name={data.product_name}
+          stock={data.stock}
+          original_price={data.original_price}
+          selling_price={data.selling_price}
+        />
+      );
     },
   },
   // {

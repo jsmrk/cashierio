@@ -109,12 +109,12 @@ export function CashierTable<TData, TValue>({
                 </TableRow>
               ))
             ) : (
-              <TableRow>
+              <TableRow className="hover:bg-transparent">
                 <TableCell
                   colSpan={columns.length}
-                  className="h-24 text-center"
+                  className="h-24 text-center "
                 >
-                  No results.
+                  No Item Yet.
                 </TableCell>
               </TableRow>
             )}

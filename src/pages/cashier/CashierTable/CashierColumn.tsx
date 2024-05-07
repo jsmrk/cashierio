@@ -23,6 +23,7 @@ export const CashierColumn: ColumnDef<SelectedProduct>[] = [
       return formatToPHP(price);
     },
   },
+
   // {
   //   accessorKey: "date",
   //   header: "Date & Time"

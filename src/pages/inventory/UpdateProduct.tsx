@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 import { Product } from "@/types/Products";
-import { useUpdateProduct } from "@/services/mutation";
+import { useUpdateProduct } from "@/services/mutations/inventoryMutation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const UpdateProduct = (data: Product) => {

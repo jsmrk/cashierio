@@ -1,17 +1,18 @@
 import Card from "@/components/Card";
 import SidebarTitle from "@/components/SidebarTitle";
-import { useAvailableProducts } from "@/services/queries";
+import { useAvailableProducts } from "@/services/queries/inventoryQueries";
 import { MenuColumn } from "./MenuColumn";
 import { CashierTable } from "./CashierTable/CashierTable";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { CashierColumn } from "./CashierTable/CashierColumn";
-import { currentSelectedProduct } from "./CashierTable/SelectedData";
 import { MenuTable } from "./MenuTable";
+import { useSelectedProducts } from "@/services/queries/cashierQueries";
 
 const Cashier = () => {
-  const { data, isPending, error, isError } = useAvailableProducts();
+  const useAvailableProduct = useAvailableProducts();
+  const useSelectedProduct = useSelectedProducts();
 
   return (
     <div className="h-full w-full flex gap-5 text-white">
@@ -19,16 +20,16 @@ const Cashier = () => {
       <div className="flex flex-col basis-4/6 ">
         <SidebarTitle className="basis-1/12">Jess Mark A. Baguio</SidebarTitle>
         <Card className="mt-5 h-full basis-11/12">
-          {isPending ? (
+          {useAvailableProduct.isPending ? (
             <div>loading...</div>
-          ) : isError ? (
-            <div>Error: {error.message}</div>
+          ) : useAvailableProduct.isError ? (
+            <div>Error: {useAvailableProduct.error.message}</div>
           ) : (
             <div>
               <MenuTable
                 columns={MenuColumn}
-                data={data}
-                pageSize={10}
+                data={useAvailableProduct.data}
+                pageSize={8}
                 tableHeader="Available Products"
                 action=<></>
               />
@@ -39,12 +40,21 @@ const Cashier = () => {
       {/* Right */}
       <Card className="flex flex-col basis-2/6">
         <div className="basis-4/6">
-          <CashierTable
-            columns={CashierColumn}
-            data={currentSelectedProduct}
-            tableHeader={"Transaction"}
-            pageSize={5}
-          />
+          {" "}
+          {useSelectedProduct.isPending ? (
+            <div>loading...</div>
+          ) : useSelectedProduct.isError ? (
+            <div>Error: {useSelectedProduct.error.message}</div>
+          ) : (
+            <div>
+              <CashierTable
+                columns={CashierColumn}
+                data={useSelectedProduct.data}
+                tableHeader={"Transaction"}
+                pageSize={5}
+              />
+            </div>
+          )}
         </div>
         <div className="grid gap-5 basis-2/6">
           <div className="grid grid-cols-5 items-center gap-4">

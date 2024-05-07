@@ -1,4 +1,4 @@
-import { useProducts } from "@/services/queries";
+import { useProducts } from "@/services/queries/inventoryQueries";
 
 const Settings = () => {
   const { data, isLoading, error, isError } = useProducts();

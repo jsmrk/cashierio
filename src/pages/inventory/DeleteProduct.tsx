@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useDeleteProduct } from "@/services/mutation";
+import { useDeleteProduct } from "@/services/mutations/inventoryMutation";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export const DeleteProduct: React.FC<{ id?: number }> = ({ id }) => {

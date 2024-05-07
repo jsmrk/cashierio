@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAdd } from "@fortawesome/free-solid-svg-icons";
 
 import { Product } from "@/types/Products";
-import { useAddProduct } from "@/services/mutation";
+import { useAddProduct } from "@/services/mutations/inventoryMutation";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const AddProduct = () => {
