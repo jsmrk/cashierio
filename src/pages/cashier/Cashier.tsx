@@ -9,10 +9,17 @@ import { Input } from "@/components/ui/input";
 import { CashierColumn } from "./CashierTable/CashierColumn";
 import { MenuTable } from "./MenuTable";
 import { useSelectedProducts } from "@/services/queries/cashierQueries";
+import { useResetSelectedItems } from "@/services/mutations/cashierMutations";
 
 const Cashier = () => {
   const useAvailableProduct = useAvailableProducts();
   const useSelectedProduct = useSelectedProducts();
+  const resetSelectedMutatation = useResetSelectedItems();
+
+  const handleDelete = async () => {
+    await resetSelectedMutatation.mutateAsync();
+    console.log("Success");
+  };
 
   return (
     <div className="h-full w-full flex gap-5 text-white">
@@ -51,7 +58,7 @@ const Cashier = () => {
                 columns={CashierColumn}
                 data={useSelectedProduct.data}
                 tableHeader={"Transaction"}
-                pageSize={5}
+                pageSize={7}
               />
             </div>
           )}
@@ -76,7 +83,9 @@ const Cashier = () => {
             <Input disabled className="col-span-4" />
           </div>
           <div className="flex justify-end gap-5">
-            <Button className="bg-grey">Reset</Button>
+            <Button className="bg-grey" onClick={handleDelete}>
+              Reset
+            </Button>
             <Button>Confirm Transaction</Button>
           </div>
         </div>

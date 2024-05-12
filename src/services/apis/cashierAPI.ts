@@ -15,3 +15,8 @@ export const addSelectedItem = async (selectedItem: SelectedProduct) => {
     .insert([selectedItem]);
   if (error) throw error;
 };
+
+export const resetSelectedItems = async () => {
+  const { error } = await supabase.from("selectedproducts").delete();
+  if (error) throw error;
+};
