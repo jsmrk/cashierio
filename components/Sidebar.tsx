@@ -14,7 +14,7 @@ import {
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Label } from "./ui/label";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const sidebardItems = [
   {
@@ -46,9 +46,14 @@ const sidebardItems = [
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
-    <div className="h-full w-[20rem] border border-r flex flex-col justify-between">
+    <div
+      className={`${
+        pathname === "/" ? "hidden" : ""
+      } h-full w-[20rem] border border-r flex flex-col justify-between`}
+    >
       <div>
         <div className="flex h-40 gap-3 justify-center items-center">
           <h1 className="text-3xl font-extrabold">Cashierio</h1>
@@ -74,10 +79,14 @@ const Sidebar = () => {
           </Avatar>
           <div className="flex flex-col text-sm text-left gap-1">
             <Label className="font-extrabold">JM. Baguio</Label>
-            <Label className="font-thin">Administrator</Label>
+            <Label className="font-light">Administrator</Label>
           </div>
         </div>
-        <Button variant={"outline"} className="text-sm">
+        <Button
+          variant={"outline"}
+          className="text-sm"
+          onClick={() => router.push("/")}
+        >
           <LogOut className="pr-2 text-sm" />
           Log Out
         </Button>
