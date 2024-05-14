@@ -10,12 +10,12 @@ export async function signUpWithEmailAndPassword(data: {
   confirm: string;
 }) {
   const supabase = await createSupabaseServerClient();
-  const result = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,
   });
-
-  return JSON.stringify(result);
+  const errorMessage = error?.message;
+  return errorMessage;
 }
 
 // //LOG IN
@@ -24,12 +24,12 @@ export async function signInWithEmailAndPassword(data: {
   password: string;
 }) {
   const supabase = await createSupabaseServerClient();
-  const result = await supabase.auth.signInWithPassword({
+  const { error } = await supabase.auth.signInWithPassword({
     email: data.email,
     password: data.password,
   });
-
-  return JSON.stringify(result);
+  const errorMessage = error?.message;
+  return errorMessage;
 }
 
 // LOG OUT

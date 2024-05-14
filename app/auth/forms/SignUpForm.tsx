@@ -39,13 +39,13 @@ const SignUpForm = () => {
   });
 
   const signup = async (data: SignUpFormFields) => {
-    const result = await signUpWithEmailAndPassword(data);
-    const { error } = JSON.parse(result);
-    if (error?.message) {
+    const errorMessage = await signUpWithEmailAndPassword(data);
+
+    if (errorMessage) {
       toast({
         title: "Error!",
         variant: "destructive",
-        description: error?.message,
+        description: errorMessage,
       });
     } else {
       toast({

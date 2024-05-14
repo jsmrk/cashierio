@@ -26,10 +26,10 @@ import { z } from "zod";
 import { signInWithEmailAndPassword } from "../actions";
 import { SignInSchema } from "../schema";
 
-const SignUpForm = () => {
-  type SignUpFormFields = z.infer<typeof SignInSchema>;
+const LogInForm = () => {
+  type SignInFormFields = z.infer<typeof SignInSchema>;
 
-  const form = useForm<SignUpFormFields>({
+  const form = useForm<SignInFormFields>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
       email: "",
@@ -37,19 +37,19 @@ const SignUpForm = () => {
     },
   });
 
-  const signup = async (data: SignUpFormFields) => {
-    const result = await signInWithEmailAndPassword(data);
-    const { error } = JSON.parse(result);
-    if (error?.message) {
+  const login = async (data: SignInFormFields) => {
+    const errorMessage = await signInWithEmailAndPassword(data);
+
+    if (errorMessage) {
       toast({
         title: "Error!",
         variant: "destructive",
-        description: error?.message,
+        description: errorMessage,
       });
     } else {
       toast({
         title: "Success!",
-        description: "Succesfully Signed In ",
+        description: "Succesfully Signed In",
       });
     }
   };
@@ -64,7 +64,7 @@ const SignUpForm = () => {
       <CardContent>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(signup)}
+            onSubmit={form.handleSubmit(login)}
             className="w-full space-y-6"
           >
             <FormField
@@ -130,4 +130,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default LogInForm;

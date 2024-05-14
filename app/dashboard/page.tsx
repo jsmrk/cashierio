@@ -1,9 +1,7 @@
-import { Card } from "@/components/ui/card";
 import { isLoggedIn } from "@/lib/utils";
 import React from "react";
 
-export default function Dashboard() {
-  isLoggedIn();
-
+export default async function Dashboard() {
+  await isLoggedIn();
   return <main className="w-full">dashboard</main>;
 }

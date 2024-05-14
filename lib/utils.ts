@@ -9,7 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export const isLoggedIn = async () => {
   const { data } = await readUserSession();
-  if (data.session) {
-    return redirect("/");
+  if (!data.session) {
+    redirect("/");
   }
 };
