@@ -14,7 +14,8 @@ import {
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Label } from "./ui/label";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { logout } from "@/app/auth/actions";
 
 const sidebardItems = [
   {
@@ -46,7 +47,6 @@ const sidebardItems = [
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const router = useRouter();
 
   return (
     <div
@@ -82,14 +82,13 @@ const Sidebar = () => {
             <Label className="font-light">Administrator</Label>
           </div>
         </div>
-        <Button
-          variant={"outline"}
-          className="text-sm"
-          onClick={() => router.push("/")}
-        >
-          <LogOut className="pr-2 text-sm" />
-          Log Out
-        </Button>
+
+        <form action={logout}>
+          <Button variant={"outline"} className="text-sm ">
+            <LogOut className="pr-2 text-sm" />
+            Log Out
+          </Button>
+        </form>
       </div>
     </div>
   );
